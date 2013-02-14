@@ -39,7 +39,20 @@ CREATE TABLE rencontre (
 	idterrain SMALLINT UNSIGNED NOT NULL,
 	idarbitre INT UNSIGNED NOT NULL,
 	numsemaine TINYINT UNSIGNED NOT NULL,
-	jour VARCHAR (10)
+	jour VARCHAR (10),
+	equipe1 VARCHAR(50) NOT NULL,
+	equipe2 VARCHAR (50) NOT NULL,
+	gagnant VARCHAR (50) NOT NULL,
+	set1equipe1 TINYINT,
+	set1equipe2 TINYINT,
+	set2equipe1 TINYINT,
+	set2equipe2 TINYINT,
+	set3equipe1 TINYINT,
+	set3equipe2 TINYINT,
+	set4equipe1 TINYINT,
+	set4equipe2 TINYINT,
+	set5equipe1 TINYINT,
+	set5equipe2 TINYINT
 	);
 	
 
