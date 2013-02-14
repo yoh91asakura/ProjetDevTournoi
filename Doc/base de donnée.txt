@@ -15,7 +15,7 @@ Arbitre	Id arbitre
 
 Equipe	Id équipe
 	Nb joueur
-	Nom
+	
 	Capitaine
 
 Poule	Id poule
@@ -23,7 +23,7 @@ Poule	Id poule
 
 Terrain	Id terrain 
 	Dispo
-	horraire
+	horaire
 
 match	Id match
 	Id terrain
