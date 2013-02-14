@@ -1,0 +1,36 @@
+﻿Projet Dev
+
+Base de Données :
+Joueur	
+	Id personne
+	Nom
+	Prénom
+	Capitaine
+	Joueur
+	Id équipe
+	        
+Arbitre	Id arbitre
+	Nom
+	Prénom
+
+Equipe	Id équipe
+	Nb joueur
+	Nom
+	Capitaine
+
+Poule	Id poule
+	Nb équipe
+
+Terrain	Id terrain 
+	Dispo
+	horraire
+
+match	Id match
+	Id terrain
+	Id arbitre
+	Date
+	Id équipe1
+	Id équipe2
+	Gagnant
+	score
+
