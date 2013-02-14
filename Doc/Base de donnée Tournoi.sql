@@ -2,10 +2,9 @@ CREATE DATABASE IF NOT EXISTS tournois;
 use tournois;
 
 CREATE TABLE joueur (
-	idpersonne INT UNSIGNED NOT NULL,
+	idjoueur INT UNSIGNED NOT NULL,
 	nom VARCHAR(30) NOT NULL,
 	prenom VARCHAR(30) NOT NULL,
-	joueur VARCHAR(3) NOT NULL,
 	capitaine VARCHAR(3) NOT NULL,
 	nomequipe VARCHAR(50) NOT NULL
 	);
