@@ -3,7 +3,7 @@
 	<infoitem key="MMGuideColor" value="#00FF00" />
 	<infoitem key="MMGuideVisible" value="false" />
 	<infoitem key="MMGuideLocked" value="false" />
-	<infoitem key="MMSnapToGuide" value="true" />
+	<infoitem key="MMSnapToGuide" value="false" />
 	<infoitem key="MMGuidesSnapToElements" value="true" />
 	<infoitem key="MMDistanceColor" value="#0000FF" />
 	<infoitem key="MMGuideCount" value="0" />

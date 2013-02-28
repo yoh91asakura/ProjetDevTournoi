@@ -9,9 +9,9 @@ class Poule
 	private $modulo = 2;
 	private $tabPoule = array();
 	
-	public function __construct($tabEquipe, $nbEquipe){
+	public function __construct($tabEquipe){
 		$this->tabEquipe = $tabEquipe;
-		$this->nbEquipe = $nbEquipe;
+		$this->nbEquipe = count($tabEquipe);
 	}
 	
 	public function nbPoule($nbEquipe){
@@ -32,7 +32,18 @@ class Poule
 		}
 		return $this->nbPoule;
 	}
-	
+
+	public function repartitionPoule(){
+		shuffle($this->tabEquipe);
+		$i = 0;
+		for ($j=0;$j<$this->nbEquipe;$j++)
+		{	
+		$this->tabPoule[$i][] = $this->tabEquipe[$j];
+		if($i == ($this->nbPoule-1))$i =0; 
+		else $i++;
+		}	
+	}
+		
 	public function getNbPoule(){
 		return $this->nbPoule;}
 		
@@ -40,15 +51,5 @@ class Poule
 		return $this->tabPoule;
 	}
 
-	public function repartitionPoule(){
-		$i = 0;
-		for ($j=0;$j<$this->nbEquipe;$j++)
-		{	
-		$this->tabPoule[$i][] = $this->tabEquipe[$j];
-		if($i == ($this->nbPoule-1))$i =0; 
-		else $i++;
-		
-		}	
-	}
 }
 ?>
