@@ -5,9 +5,9 @@ class Poule
 	private $tabEquipe; //Tableau contenant toutes les équipes
 	private $nbEquipe; //nombre d'équipe dans les poules
 	private $nbPoule =1; //nombre de poules à créer
-	private $compteurEquipe = 6;
-	private $modulo = 2;
-	private $tabPoule = array();
+	private $compteurEquipe = 6;//compteur pour la réussite de la séparation des poules
+	private $modulo = 2;//pmodulo à incrémenter
+	private $tabPoule = array();//le tableau de poule
 	
 	public function __construct($tabEquipe){
 		$this->tabEquipe = $tabEquipe;
