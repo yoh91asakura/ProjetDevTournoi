@@ -17,13 +17,18 @@ return $tabEquipe;
 
 }
 
-function initPoule($bdd,$tabPoule){
-$req = $bdd->prepare('INSERT INTO poule(idpoule: id, nombreequipe : nombre');
+function initIdPoule($bdd,$tabPoule){
+$req = $bdd->prepare("UPDATE equipe SET idPoule = :id WHERE nomequipe = :equipe");
 foreach($tabPoule as $index=>$poule)
-$req->execute(array(
-    'id' => $index,
-    'nombreequipe' => count($poule),
-    ));
+	{
+		foreach($poule as $equipe_score)
+		{
+		$res = $bdd->query('SELECT nomequipe FROM equipe');
+		while ($ligne = $res->fetch())
+		if ($ligne['nomequipe'] == $equipe_score[0])
+			$req->execute(array('id' => ($index+1), 'equipe' => $equipe_score[0]));
+		}
+	}
 }
 
 function updateScore($bdd,&$tabPoule){

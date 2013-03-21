@@ -5,11 +5,12 @@ require('Class/GestionPoule.class.php');
 require('traitementBase.php');
 
 //$tabEquipe = array ('lapin','chien','chat','tortue','chevre','girafe',/*'rat','lezard','renard','1234','rapidStar','lapanoma','rotard','rapinotte','pluie','soleil','rapace','joviale','roger','herbert','ines','felix','rabin','kokiri','lacif','massif','klarifie','4567','ilisousous','retorque','bitokus','tokris','cloporte','pikachu','salamèche','bulbizarre','robinhood','dracofeu','polite','robespierre','volataire','rousseaux'*/);
-$tabEquipe = recupEquipes($bdd);//recupere les équipes depuis la base de donnée
+
 
 
 if ($_SESSION['i']==0)
 {
+$tabEquipe = recupEquipes($bdd);//recupere les équipes depuis la base de donnée
 $poule = new Poule($tabEquipe);//créer une instance de poule (donc un tableau de poule)
 
 	$poule->nbPoule(count($tabEquipe));//nbPoule DOIT etre mis a jour en fonction du nb d'équipe pour que ça marche
@@ -22,7 +23,7 @@ $gestionPoule = new GestionPoule($tabPoule);//créer une instance de gestion du 
 $nbPoule = $poule->getNbPoule();//ne sert que pour les test mais éxiste pour récup le nombre de poule
 $_SESSION['tabPoule'] = $poule->getTabPoule();//on récup le tabPoule (tab a 2 dimension : dim1=n° de poule ; dim2= équipes)
 $_SESSION['tabMatch'] = $gestionPoule->getTabMatch();//on récup le tabMatch (tab à 3 dimention : dim1=n° de poule ; dim2 = match : dim3 = équipes)
-initPoule($bdd,$_SESSION['tabPoule']);
+initIdPoule($bdd,$_SESSION['tabPoule']);//Set les IdPoules dans la base de données
 $_SESSION['i']=1;
 }
 updateScore($bdd,$_SESSION['tabPoule']);

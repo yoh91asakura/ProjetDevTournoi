@@ -15,7 +15,7 @@ class GestionPoule {
 			foreach($lig as $index2 => $col){
 				for ($i=$index2+1 ; $i<count($lig) ; $i++)
 				{
-				$this->tabMatch[$index][] = array($col,$this->tabPoule[$index][$i]);
+				$this->tabMatch[$index][] = array($col[0],$this->tabPoule[$index][$i][0]);
 				$this->nbMatch++;
 				}
 			}
