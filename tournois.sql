@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
+CREATE DATABASE IF NOT EXISTS `tournois`;
+
+USE tournois;
 
 --
 -- Structure de la table `arbitre`
