@@ -1,4 +1,5 @@
 <?php
+
 class Poule
 {
  	//attributs
@@ -15,8 +16,6 @@ class Poule
 	}
 	
 	public function nbPoule($nbEquipe){
-		
-		
 		
 		if ($nbEquipe <= 4) return $this->nbPoule = 0; //si il y a 4 équipe il n'y aura pas de poules
 		if ($nbEquipe == 5) return $this->nbPoule = 1; //pour 5 équipes, on fera une poule avec les 2 meilleurs en final
@@ -38,11 +37,13 @@ class Poule
 		$i = 0;
 		for ($j=0;$j<$this->nbEquipe;$j++)
 		{	
-		$this->tabPoule[$i][] = $this->tabEquipe[$j];
-		if($i == ($this->nbPoule-1))$i =0; 
+		$this->tabPoule[$i][] = array($this->tabEquipe[$j],0);
+		if($i == ($this->nbPoule-1))$i = 0; 
 		else $i++;
 		}	
 	}
+	
+
 		
 	public function getNbPoule(){
 		return $this->nbPoule;}
