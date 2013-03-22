@@ -1,17 +1,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="jQuery/jquery.form.js"></script> 
+<script src="jQuery/jQuery.js"></script> 
 <?php
-require('traitement/traitementPoule.php');
-		
+require('Traitement/traitementPoule.php');
+
 if(!isset($_GET['choix']))$choix=-1;
 	else $choix = $_GET['choix'];
 if ($choix >=0 AND $choix < count($_SESSION['tabPoule']))
 afficherTabMatch($_SESSION['tabMatch'], $choix);
 	else afficherTabPoule($_SESSION['tabPoule']);
 	
-	echo'<pre>'; 
+	/*echo'<pre>'; 
 	print_r($_SESSION['tabMatch']);
-	echo'</pre>';
+	echo'</pre>';*/
+	?>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#Form1").on('submit', function() {
+		
+		var set1 = $('#set1score1').val();
+		var set2 = $('#set2score1').val();
+		var set3 = $('#set3score1').val();
+		
+		$ajax({
+			url: "Traitement/traitementScore.php",
+			type: $(this).attr('method'),
+			data: $(this).serialize(),
+			success function(data){alert(data);}
+			});
+			
+		return false;
+	});
+});
+    </script>
+
+<?php
 	
 function afficherTabPoule($tabPoule){// affiche le tableau des poules, pour le moment en lignes
 	
@@ -41,6 +63,7 @@ function afficherTabMatch($tabMatch, $choix){//affiche le tableau de match de la
 		echo '<hr>';
 		echo '<table border="1" width="40%" cellspacing="0" cellpadding="10" align="center">';
 		echo '<tr>
+					<td>N° Match</td>
 		 			<td width="default">Equipe1 </td>
 					<td>Terrain</td>
 		 			<td>set1</td>
@@ -52,12 +75,13 @@ function afficherTabMatch($tabMatch, $choix){//affiche le tableau de match de la
 		foreach($tabMatch[$choix] as $index => $col)
 		{
 			echo '<tr>';
-			echo'<form id="myForm'.$index.'" action="affichePoule.php?choix=-1">';
+			echo'<form id="Form'.($index+1).'" method="post">';
+				echo '<td>'.($index+1).'</td>';
 				echo '<td>'.$col[0].'</td>';
 				echo '<td>Terrain'.$col.'</td>'; 
-				echo '<td> <input type="text" name="scoreSet1" maxlength="5" size="2" value="  /  "> </td>
-					<td> <input type="text" name="scoreSet2" maxlength="5" size="2" value="  /  "> </td>
-					<td> <input type="text" name="scoreSet3" maxlength="5" size="2" value="  /  "> </td>';
+				echo '<td> <input type="text" name="scoreSet1" maxlength="5" size="2" id="set1score'.($index+1).'"</td>
+					  <td> <input type="text" name="scoreSet2" maxlength="5" size="2" id="set2score'.($index+1).'"</td>
+					  <td> <input type="text" name="scoreSet3" maxlength="5" size="2" id="set3score'.($index+1).'"</td>';
 				echo '<td>'.$col[1].'</td>';
 				echo '<td colspan="0" rowspan="0"><input name="Valider" type="submit" value="Valider Match '.($index+1).'"></td>';
 			echo '</form>';
@@ -68,17 +92,7 @@ function afficherTabMatch($tabMatch, $choix){//affiche le tableau de match de la
 		echo '</table>';
 		echo '<p><br/><br/>';
 		echo '<a href="affichePoule.php?choix=-1">Retour à La page des Poules</a></p>';
-		?>
-		<script> 
-        // wait for the DOM to be loaded 
-        $(document).ready(function() { 
-            // bind 'myForm' and provide a simple callback function 
-            $('#myForm').ajaxForm(function() { 
-                alert("Thank you for your comment!"); 
-            }); 
-        }); 
-    </script>
-	<?php
-}
+		
+}//Traitement/traitementScore.php?equipe1='.$col[0].'&equipe2='.$col[1].'
 
 ?>
